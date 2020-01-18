@@ -1,9 +1,9 @@
 package users;
 
-abstract class user {
+abstract class User {
     // === Instance Variables ===
     private String name;
-    private String phone_num;
+    private String phoneNum;
     private String email;
 
     // === Methods ===
@@ -15,12 +15,12 @@ abstract class user {
         this.name = name;
     }
 
-    public String getPhone_num() {
-        return phone_num;
+    public String getPhoneNum() {
+        return phoneNum;
     }
 
-    public void setPhone_num(String phone_num) {
-        this.phone_num = phone_num;
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
     }
 
     public String getEmail() {
