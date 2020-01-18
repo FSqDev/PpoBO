@@ -1,0 +1,5 @@
+1. App that logs people per building, indicating status of study spaces/helping students choose a location to work. Uses Radar, Blockstack, maybe Google
+
+2. I dont feel safe button which uses Radar to send info to trusted contacts
+
+3. Dementia patients, tracking geofence and sends alerts to trusted people. Integrate sensors for fall detection and shit
