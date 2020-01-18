@@ -1,5 +1,7 @@
 package com.example.test.ppobo;
 
+import android.Manifest;
+import android.location.Location;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -7,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
+import androidx.core.app.ActivityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,10 +24,20 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import io.radar.sdk.Radar;
+import io.radar.sdk.model.RadarEvent;
+import io.radar.sdk.model.RadarUser;
+
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private FloatingActionButton fab;
+    public int requestCode = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +64,19 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        Radar.initialize("publishableKey");
+        Radar.setUserId("UserID");
+        Radar.setDescription("Description");
+
+        ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION }, requestCode);
+        ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION }, requestCode);
+        Radar.trackOnce(new Radar.RadarCallback() {
+            @Override
+            public void onComplete(@NotNull Radar.RadarStatus radarStatus, @Nullable Location location, @Nullable RadarEvent[] radarEvents, @Nullable RadarUser radarUser) {
+                
+            }
+        });
     }
 
     /*@Override
@@ -66,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 
     public void showFloatingActionButton() {
         fab.show();
