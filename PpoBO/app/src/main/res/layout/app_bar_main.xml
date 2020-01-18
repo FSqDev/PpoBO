@@ -27,36 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="64dp"
+        android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/nav_maps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/nav_maps" />
-
-        <Button
-            android:id="@+id/nav_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/menu_home" />
-
-        <Button
-            android:id="@+id/nav_alerts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/nav_alerts" />
-    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
