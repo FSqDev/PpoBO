@@ -36,5 +36,7 @@
                 <data android:scheme="myblockstackapp" />
             </intent-filter>
         </activity>
+        <activity android:name=".Registration" />
+        <activity android:name=".Login" />
     </application>
     </manifest>

@@ -1,10 +1,11 @@
 package users;
 
-abstract class User {
+public class User {
     // === Instance Variables ===
     private String name;
     private String phoneNum;
     private String email;
+    private String userType;
 
     // === Methods ===
     public String getName() {
@@ -29,5 +30,9 @@ abstract class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUserType(){
+        return userType;
     }
 }
