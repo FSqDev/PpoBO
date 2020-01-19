@@ -97,7 +97,7 @@ class ReminderRepository(private val context: Context) {
               longitude,
               radius.toFloat()
           )
-          .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)
+          .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_EXIT)
           .setExpirationDuration(Geofence.NEVER_EXPIRE)
           .build()
     }
@@ -107,7 +107,7 @@ class ReminderRepository(private val context: Context) {
 
   private fun buildGeofencingRequest(geofence: Geofence): GeofencingRequest {
     return GeofencingRequest.Builder()
-        .setInitialTrigger(0)
+        .setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_EXIT)
         .addGeofences(listOf(geofence))
         .build()
   }

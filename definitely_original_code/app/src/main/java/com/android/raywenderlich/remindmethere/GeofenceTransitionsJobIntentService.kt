@@ -65,7 +65,7 @@ class GeofenceTransitionsJobIntentService : JobIntentService() {
   }
 
   private fun handleEvent(event: GeofencingEvent) {
-    if (event.geofenceTransition == Geofence.GEOFENCE_TRANSITION_ENTER) {
+    if (event.geofenceTransition == Geofence.GEOFENCE_TRANSITION_EXIT) {
       val reminder = getFirstReminder(event.triggeringGeofences)
       val message = reminder?.message
       val latLng = reminder?.latLng
