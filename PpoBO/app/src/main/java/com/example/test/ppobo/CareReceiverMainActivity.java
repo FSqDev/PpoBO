@@ -92,13 +92,13 @@ public class CareReceiverMainActivity extends AppCompatActivity {
                                         mySmsManager.sendTextMessage(document.getString("phoneNum"), null, message, null, null);
 
                                         getLocation();
-                                        
+
                                         HashMap<String,String> data = new HashMap<>();
                                         data.put("name",self.getName());
                                         data.put("phoneNum",self.getPhoneNum());
                                         data.put("location",addressLocation);
 
-                                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
+                                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                                         String format = simpleDateFormat.format(new Date());
                                         db.collection("Users").document(document.getId()).collection("alerts").document(format).set(data);
 
@@ -122,6 +122,7 @@ public class CareReceiverMainActivity extends AppCompatActivity {
     }
 
     private void getLocation(){
+        addressLocation = "";
         if (ContextCompat.checkSelfPermission(CareReceiverMainActivity.this , Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(CareReceiverMainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
         } else {
