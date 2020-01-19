@@ -12,6 +12,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
+
 
 public class PostHelpRedirect extends AppCompatActivity {
 
@@ -24,6 +28,7 @@ public class PostHelpRedirect extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_help_redirect);
+
         emergency = findViewById(R.id.emergency);
         emergencyPrep = findViewById(R.id.emergency_management);
         poisonControl = findViewById(R.id.poison);
@@ -56,8 +61,7 @@ public class PostHelpRedirect extends AppCompatActivity {
         intent.setData(Uri.parse("tel:811"));
         startActivity(intent);
 
+
     }
-
-
 
 }
