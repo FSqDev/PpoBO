@@ -11,28 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/register_tv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:paddingStart="120dp"
+            android:layout_height="70dp"
+            android:background="#d95d91"
+            android:paddingTop="15dp"
             android:text="Sign Up"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            android:textSize="28sp" />
+            android:textColor="#ffffff"
+            android:textSize="28sp"
+            android:gravity="center_horizontal" >
+        </TextView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="#ffffff"
+            app:srcCompat="@drawable/logo">
+
+        </ImageView>
 
         <View
             android:id="@+id/divider_reg"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:background="@color/common_google_signin_btn_text_light_focused"
-            android:backgroundTint="@color/common_google_signin_btn_text_light_focused" />
+            android:backgroundTint="@color/common_google_signin_btn_text_light_focused"/>
 
         <EditText
             android:id="@+id/email_new_user_tv"

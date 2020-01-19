@@ -5,34 +5,23 @@
 
     <Button
         android:id="@+id/manage_caretakers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Manage Caretakers" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/message_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <Button
-            android:id="@+id/change_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Change Message" />
-    </LinearLayout>
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginLeft="-30dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/round_buton"
+        android:text="Manage Caretakers"
+        android:textColor="#ffffff"
+        android:textSize="30sp"/>
 
     <Button
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:id="@+id/logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logout" />
+        android:layout_width="580dp"
+        android:layout_height="580dp"
+        android:background="@drawable/round_buton_blue"
+        android:text="Logout"
+        android:textColor="#ffffff"
+        android:textSize="30sp"/>
 </LinearLayout>
