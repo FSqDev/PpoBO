@@ -87,11 +87,27 @@
             android:hint="Phone Number"
             android:inputType="phone" />
 
+        <TextView
+            android:id="@+id/invalid_phone_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Invalid Phone Number"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="invisible" />
+
         <Spinner
             android:id="@+id/user_type"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:entries="@array/userType" />
+
+        <TextView
+            android:id="@+id/invalid_role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please choose a role"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/register_new_user_btn"

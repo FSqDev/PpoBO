@@ -6,6 +6,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="help_msg">Your care receiver has wandered aqay from their designated housing</string>
 
     <string name="menu_home">Home</string>
 
@@ -13,14 +14,10 @@
     <string name="nav_home">Home</string>
     <string name="nav_alerts">Alerts</string>
 
-    <string name="send_sms">HELP ME PLEASE I AM FUCKING DYING</string>
-    <string name="enter_the_number">Enter the number</string>
-    <string name="alert_message">Alert Message</string>
-    <string name="aaah">Your care receiver has left their designated vicinity</string>
     <string-array name="userType">
         <item>Choose a role</item>
         <item>Care Giver</item>
-        <item>Care Taker</item>
+        <item>Care Receiver</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
 </resources>

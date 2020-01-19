@@ -1,23 +1,15 @@
 package com.example.test.ppobo;
 
 import android.Manifest;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 
-import com.google.android.gms.location.Geofence;
-import com.google.android.gms.location.GeofencingClient;
-import com.google.android.gms.location.GeofencingRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import android.telephony.SmsManager;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -31,7 +23,10 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -39,12 +34,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.EditText;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
+import io.radar.sdk.Radar;
+import io.radar.sdk.RadarTrackingOptions;
+import io.radar.sdk.model.RadarEvent;
+import io.radar.sdk.model.RadarUser;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -52,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private FloatingActionButton fab;
     public int requestCode = 1;
-    private GeofencingClient geofencingClient;
-    private ArrayList geofenceList;
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
 
@@ -64,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        geofencingClient = LocationServices.getGeofencingClient(this);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -83,12 +77,36 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home,R.id.nav_maps,R.id.nav_alerts)
+                R.id.nav_home,R.id.nav_maps,R.id.nav_alerts,R.id.nav_logout)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        Radar.initialize("publishableKey");
+        Radar.setUserId("UserID");
+        Radar.setDescription("Description");
+
+        ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION }, requestCode);
+        ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION }, requestCode);
+        Radar.trackOnce(new Radar.RadarCallback() {
+            @Override
+            public void onComplete(@NotNull Radar.RadarStatus radarStatus, @Nullable Location location, @Nullable RadarEvent[] radarEvents, @Nullable RadarUser radarUser) {
+
+            }
+        });
+        Radar.startTracking();
+
+        RadarTrackingOptions trackingOptions = new RadarTrackingOptions.Builder()
+                .priority(Radar.RadarTrackingPriority.RESPONSIVENESS) // use EFFICIENCY instead to reduce location update frequency
+                .offline(Radar.RadarTrackingOffline.REPLAY_STOPPED) // use REPLAY_OFF instead to disable offline replay
+                .sync(Radar.RadarTrackingSync.POSSIBLE_STATE_CHANGES) // use ALL instead to sync all location updates
+                .build();
+
+        Radar.startTracking(trackingOptions);
+
+
     }
 
 
@@ -106,7 +124,19 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, Login.class);
             startActivity(intent);
         } else if (mAuth.getCurrentUser() != null){
-            ;
+            db.collection("Users").document(mAuth.getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot != null){
+                        if (documentSnapshot.getString("userType").equals("Care Receiver")){
+                            Intent intent = new Intent(MainActivity.this,CareReceiverMainActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+
+                }
+            });
         }
     }
 
