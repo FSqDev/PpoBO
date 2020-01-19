@@ -105,5 +105,5 @@ public class ManageCareTakers extends AppCompatActivity {
         careGiverListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
-    
+
 }

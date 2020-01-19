@@ -20,5 +20,13 @@ public class CareReceiverSettings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        findViewById(R.id.logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CareReceiverSettings.this,Login.class);
+                startActivity(intent);
+            }
+        });
     }
 }
