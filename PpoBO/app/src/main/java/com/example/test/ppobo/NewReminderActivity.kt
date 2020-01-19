@@ -155,7 +155,7 @@ class NewReminderActivity : BaseActivity(), OnMapReadyCallback {
     showReminderUpdate()
   }
 
-  private fun getRadius(progress: Int) = 100 + (2 * progress.toDouble() + 1) * 100
+  private fun getRadius(progress: Int) = 50 + (2 * progress.toDouble() + 1) * 50
 
   private fun showConfigureMessageStep() {
     marker.visibility = View.GONE
