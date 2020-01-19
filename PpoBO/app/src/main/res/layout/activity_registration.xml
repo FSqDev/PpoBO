@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Registration">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/register_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:paddingStart="120dp"
+            android:text="Sign Up"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textSize="28sp" />
+
+        <View
+            android:id="@+id/divider_reg"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/common_google_signin_btn_text_light_focused"
+            android:backgroundTint="@color/common_google_signin_btn_text_light_focused" />
+
+        <EditText
+            android:id="@+id/email_new_user_tv"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="40dp"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:paddingStart="10dp" />
+
+        <TextView
+            android:id="@+id/register_invalid_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Invalid Email"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/username_new_user_tv"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:paddingStart="10dp" />
+
+        <TextView
+            android:id="@+id/register_invalid_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Invalid Username"
+            android:textColor="@android:color/holo_red_dark"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/password_new_user_tv"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingStart="10dp" />
+
+        <EditText
+            android:id="@+id/phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Phone Number"
+            android:inputType="phone" />
+
+        <Spinner
+            android:id="@+id/user_type"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:entries="@array/userType" />
+
+        <Button
+            android:id="@+id/register_new_user_btn"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="#2196F3"
+            android:text="Register"
+            android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
+
+    </LinearLayout>
+
+</LinearLayout>

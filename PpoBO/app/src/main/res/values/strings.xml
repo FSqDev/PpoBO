@@ -17,4 +17,9 @@
     <string name="enter_the_number">Enter the number</string>
     <string name="alert_message">Alert Message</string>
     <string name="aaah">Your care receiver has left their designated vicinity</string>
+    <string-array name="userType">
+        <item>Choose a role</item>
+        <item>Care Giver</item>
+        <item>Care Taker</item>
+    </string-array>
 </resources>
