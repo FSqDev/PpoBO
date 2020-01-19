@@ -25,6 +25,9 @@ import org.w3c.dom.Document;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import users.User;
 
 public class ManageCareTakers extends AppCompatActivity {
@@ -36,6 +39,7 @@ public class ManageCareTakers extends AppCompatActivity {
     FirebaseAuth mAuth;
     private ArrayList<User> careGivers;
     private CareGiverAdapter adapter;
+    ListView careGiverListView;
 
 
     @Override
@@ -48,10 +52,43 @@ public class ManageCareTakers extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+        careGiverListView = findViewById(R.id.care_giver_list);
+        getCareTakers();
 
+        careTakerBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                careTaker = careTakerTV.getText().toString();
+                if (!careTaker.equals("")) {
+                    DocumentReference documentReference = db.collection("Users").document(careTaker);
+                    documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot documentSnapshot = task.getResult();
+                                if (documentSnapshot.exists()) {
+                                    if (documentSnapshot.getString("userType").equals("Care Giver")) {
+                                        HashMap<String, String> data = new HashMap<>();
+                                        data.put("name", documentSnapshot.getString("name"));
+                                        data.put("phoneNum", documentSnapshot.getString("phoneNum"));
+                                        db.collection("Users").document(mAuth.getCurrentUser().getEmail()).collection("people").document(careTaker).set(data);
+                                        HashMap<String, String> data2 = new HashMap<>();
+                                        data2.put("email", mAuth.getCurrentUser().getEmail());
+                                        db.collection("Users").document(careTaker).collection("people").document(mAuth.getCurrentUser().getEmail()).set(data2);
+                                        careTakerTV.setText("");
+                                        getCareTakers();
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+    private void getCareTakers(){
         careGivers = new ArrayList<>();
-
-
         db.collection("Users").document(mAuth.getCurrentUser().getEmail()).collection("people").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -64,41 +101,9 @@ public class ManageCareTakers extends AppCompatActivity {
                         }
                     }
                 });
-
-        ListView careGiverListView = findViewById(R.id.care_giver_list);
-        adapter = new CareGiverAdapter(this, R.layout.care_giver_adapter, careGivers);
+        adapter = new CareGiverAdapter(this,R.layout.care_giver_adapter, careGivers);
         careGiverListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
-
-        careTakerBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                careTaker = careTakerTV.getText().toString();
-                DocumentReference documentReference = db.collection("Users").document(careTaker);
-                documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()){
-                            DocumentSnapshot documentSnapshot = task.getResult();
-                            if (documentSnapshot.exists()) {
-                                if (documentSnapshot.getString("userType").equals("Care Giver")) {
-                                    HashMap<String, String> data = new HashMap<>();
-                                    data.put("name", documentSnapshot.getString("name"));
-                                    data.put("phoneNum", documentSnapshot.getString("phoneNum"));
-                                    db.collection("Users").document(mAuth.getCurrentUser().getEmail()).collection("people").document(careTaker).set(data);
-                                    HashMap<String,String> data2 = new HashMap<>();
-                                    data2.put("email",mAuth.getCurrentUser().getEmail());
-                                    db.collection("Users").document(careTaker).collection("people").document(mAuth.getCurrentUser().getEmail()).set(data2);
-                                    careTakerTV.setText("");
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        });
     }
-
-
+    
 }
