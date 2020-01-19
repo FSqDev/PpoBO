@@ -27,10 +27,12 @@
 
         <EditText
             android:id="@+id/username"
+            style="@style/Widget.AppCompat.EditText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Email"
-            android:paddingStart="10dp" />
+            android:paddingStart="10dp"
+            android:background="@layout/rounded_border_edittext"/>
 
         <EditText
             android:id="@+id/password"
@@ -39,7 +41,8 @@
             android:layout_marginTop="15dp"
             android:hint="Password"
             android:inputType="textPassword"
-            android:paddingStart="10dp" />
+            android:paddingStart="10dp"
+            android:background="@layout/rounded_border_edittext"/>
 
         <Button
             android:id="@+id/login"
