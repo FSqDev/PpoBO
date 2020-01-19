@@ -20,5 +20,10 @@
         android:name="com.example.test.ppobo.AlertsFragment"
         android:label="@string/nav_alerts"
         tools:layout="@layout/fragment_alerts" />
+    <activity
+        android:id="@+id/nav_logout"
+        android:name="com.example.test.ppobo.Login"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 
 </navigation>
