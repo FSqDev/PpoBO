@@ -22,4 +22,5 @@
         <item>Care Giver</item>
         <item>Care Taker</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>
