@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -59,6 +60,10 @@ public class Registration extends AppCompatActivity {
         registerBTN = findViewById(R.id.register_new_user_btn);
         usernameTV = findViewById(R.id.username_new_user_tv);
         final CollectionReference collectionReference = db.collection("Users");
+
+        Spinner userType = findViewById(R.id.user_type);
+        userType.setOnItemSelectedListener();
+
 
         // Upon pressing the register button
         registerBTN.setOnClickListener(new View.OnClickListener() {

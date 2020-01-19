@@ -12,4 +12,10 @@
     <string name="nav_maps">Maps</string>
     <string name="nav_home">Home</string>
     <string name="nav_alerts">Alerts</string>
+
+    <string-array name="userType">
+        <item>Choose a role</item>
+        <item>Care Giver</item>
+        <item>Care Taker</item>
+    </string-array>
 </resources>
