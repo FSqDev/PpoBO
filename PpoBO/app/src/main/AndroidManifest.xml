@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AlertsFragment"></activity>
+        <activity android:name=".CareReceiverSettings"></activity>
+        <activity android:name=".CareReceiverMainActivity" />
+        <activity android:name=".AlertsFragment" />
         <activity android:name=".MapFragment" />
         <activity
             android:name=".MainActivity"
