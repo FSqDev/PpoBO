@@ -19,6 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private FloatingActionButton fab;
     public int requestCode = 1;
-    private FirebaseDatabase db;
+    private FirebaseFirestore db;
     private FirebaseAuth mAuth;
 
     @Override
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        db = FirebaseDatabase.getInstance();
+        db = FirebaseFirestore.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         fab = findViewById(R.id.fab);
