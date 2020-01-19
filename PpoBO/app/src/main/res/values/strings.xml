@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="help_msg">Your care receiver requires immediate assistance</string>
-    <string name="post_help_msg">Your trusted care takers have been notified of your situation. Help is on the way. If you feel it is necessary, below are a few other places you may want to consider calling</string>
+    <string name="post_help_msg">Your trusted care takers have been notified of your situation.\n\nHelp is on the way.\n\nYou may want to consider calling:</string>
 
     <string name="menu_home">Home</string>
 
