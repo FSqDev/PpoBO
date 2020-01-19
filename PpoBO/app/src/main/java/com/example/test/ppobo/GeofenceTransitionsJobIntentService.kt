@@ -70,7 +70,7 @@ class GeofenceTransitionsJobIntentService : JobIntentService() {
       val message = reminder?.message
       val latLng = reminder?.latLng
       if (message != null && latLng != null) {
-          sendNotification(this, message, latLng)
+          sendNotification(this, "A care receiver has left their designated Geofence (view)", latLng)
       }
     }
   }
