@@ -47,7 +47,8 @@
         app:layout_constraintTop_toBottomOf="@+id/caretaker_logo"
         tools:layout_conversion_absoluteHeight="685dp"
         tools:layout_conversion_absoluteWidth="411dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent">
 
     </ListView>
 
