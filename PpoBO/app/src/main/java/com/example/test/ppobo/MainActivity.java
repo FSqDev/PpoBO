@@ -38,10 +38,6 @@ import android.view.Menu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import io.radar.sdk.Radar;
-import io.radar.sdk.RadarTrackingOptions;
-import io.radar.sdk.model.RadarEvent;
-import io.radar.sdk.model.RadarUser;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -83,28 +79,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        Radar.initialize("publishableKey");
-        Radar.setUserId("UserID");
-        Radar.setDescription("Description");
-
-        ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION }, requestCode);
-        ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION }, requestCode);
-        Radar.trackOnce(new Radar.RadarCallback() {
-            @Override
-            public void onComplete(@NotNull Radar.RadarStatus radarStatus, @Nullable Location location, @Nullable RadarEvent[] radarEvents, @Nullable RadarUser radarUser) {
-
-            }
-        });
-        Radar.startTracking();
-
-        RadarTrackingOptions trackingOptions = new RadarTrackingOptions.Builder()
-                .priority(Radar.RadarTrackingPriority.RESPONSIVENESS) // use EFFICIENCY instead to reduce location update frequency
-                .offline(Radar.RadarTrackingOffline.REPLAY_STOPPED) // use REPLAY_OFF instead to disable offline replay
-                .sync(Radar.RadarTrackingSync.POSSIBLE_STATE_CHANGES) // use ALL instead to sync all location updates
-                .build();
-
-        Radar.startTracking(trackingOptions);
 
 
     }
