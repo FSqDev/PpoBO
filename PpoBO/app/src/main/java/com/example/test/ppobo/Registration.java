@@ -105,6 +105,7 @@ public class Registration extends AppCompatActivity {
                 }
                 // Creates a new user with email and password input by user
                 if (!errors) {
+                    User user = new User(username,phoneNum,email,userType);
                     mAuth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -115,14 +116,11 @@ public class Registration extends AppCompatActivity {
                                         Log.d(TAG, "createUserWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         // Creates a new user in the database
-                                        HashMap<String, String> data = new HashMap<>();
-                                        data.put("email", email);
-                                        data.put("name", username);
-                                        data.put("phoneNum",phoneNum);
-                                        data.put("userType",userType);
+                                        /*HashMap<String, String> data = new HashMap<>();
+                                        data.put(email, user);*/
                                         collectionReference
                                                 .document(email)
-                                                .set(data)
+                                                .set(user)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
