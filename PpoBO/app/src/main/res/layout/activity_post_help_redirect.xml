@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".PostHelpRedirect">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#d95d91"
+        android:gravity="center"
+        android:text="ALERTS SENT"
+        android:textSize="24sp"
+        android:textColor="#ffffff"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#d95d91"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@id/textView1"
+        app:srcCompat="@android:drawable/ic_dialog_alert">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/post_help_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/post_help_msg"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image1"
+        tools:text="@string/post_help_msg" />
+
+    <Button
+        android:id="@+id/poison"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Poison Control"
+        android:onClick="onDialPoison"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.747" />
+
+    <Button
+        android:id="@+id/emergency"
+        android:layout_width="144dp"
+        android:layout_height="46dp"
+        android:text="911"
+        android:onClick="onDialEmergency"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/post_help_message"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61" />
+
+    <Button
+        android:id="@+id/emergency_management"
+        android:layout_width="148dp"
+        android:layout_height="47dp"
+        android:text="AEMA"
+        android:onClick="onDialEmergencyManagement"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.876" />
+
+    <Button
+        android:id="@+id/dementia_advice"
+        android:layout_width="148dp"
+        android:layout_height="47dp"
+        android:text="Dementia Advice"
+        android:onClick="onDialDementiaAdvice"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.998" />
+</androidx.constraintlayout.widget.ConstraintLayout>

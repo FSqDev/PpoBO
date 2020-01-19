@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="50dp"
+        android:background="#d95d91"
+        android:gravity="center"
+        android:text="Your Cared Ones"
+        android:textSize="24sp"
+        android:textColor="#ffffff">
+
+    </TextView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#d95d91"
+        app:srcCompat="@drawable/heart"
+        android:paddingBottom="10dp">
+
+    </ImageView>
+
+
+    <ListView
+        android:id="@+id/list_care_receivers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+    </ListView>
+</LinearLayout>
