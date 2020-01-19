@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -14,10 +17,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Document;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import users.User;
 
 public class ManageCareTakers extends AppCompatActivity {
 
@@ -26,6 +34,8 @@ public class ManageCareTakers extends AppCompatActivity {
     String careTaker;
     FirebaseFirestore db;
     FirebaseAuth mAuth;
+    private ArrayList<User> careGivers;
+    private CareGiverAdapter adapter;
 
 
     @Override
@@ -38,6 +48,28 @@ public class ManageCareTakers extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+
+        careGivers = new ArrayList<>();
+
+
+        db.collection("Users").document(mAuth.getCurrentUser().getEmail()).collection("people").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                User careGiver = new User(document.getString("name"), document.getString("phoneNum"), document.getId(), "Care Giver");
+                                careGivers.add(careGiver);
+                            }
+                        }
+                    }
+                });
+
+        ListView careGiverListView = findViewById(R.id.care_giver_list);
+        adapter = new CareGiverAdapter(this, R.layout.care_giver_adapter, careGivers);
+        careGiverListView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
 
         careTakerBTN.setOnClickListener(new View.OnClickListener() {
             @Override
