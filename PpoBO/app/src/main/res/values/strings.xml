@@ -16,6 +16,6 @@
     <string-array name="userType">
         <item>Choose a role</item>
         <item>Care Giver</item>
-        <item>Care Taker</item>
+        <item>Care Receiver</item>
     </string-array>
 </resources>

@@ -85,7 +85,7 @@ public class Registration extends AppCompatActivity {
                 password = passwordTV.getText().toString();
                 username = usernameTV.getText().toString();
                 userType = userTypeSpinner.getSelectedItem().toString();
-                phoneNum = phoneNumTV.toString();
+                phoneNum = phoneNumTV.getText().toString();
                 if (email.equals("")) {
                     email = " ";
                 }
@@ -116,11 +116,14 @@ public class Registration extends AppCompatActivity {
                                         Log.d(TAG, "createUserWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         // Creates a new user in the database
-                                        /*HashMap<String, String> data = new HashMap<>();
-                                        data.put(email, user);*/
+                                        HashMap<String, String> data = new HashMap<>();
+                                        data.put("email", email);
+                                        data.put("name",username);
+                                        data.put("userType",userType);
+                                        data.put("phoneNum",phoneNum);
                                         collectionReference
                                                 .document(email)
-                                                .set(user)
+                                                .set(data)
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
