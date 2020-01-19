@@ -55,7 +55,7 @@ import kotlinx.android.synthetic.main.fragment_map.*
 
 class MapFragment : BaseActivity(),OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
-    public companion object {
+    companion object {
         private const val MY_LOCATION_REQUEST_CODE = 329
         private const val NEW_REMINDER_REQUEST_CODE = 330
         private const val EXTRA_LAT_LNG = "EXTRA_LAT_LNG"
@@ -73,7 +73,7 @@ class MapFragment : BaseActivity(),OnMapReadyCallback, GoogleMap.OnMarkerClickLi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.fragment_map)
 
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
