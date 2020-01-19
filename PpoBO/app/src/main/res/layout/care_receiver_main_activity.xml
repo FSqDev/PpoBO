@@ -8,12 +8,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="AHHHH"
-        android:textSize="96sp" />
+        android:background="#d95d91"
+        android:text="HELP"
+        android:textSize="96sp"
+        android:textColor="#ffffff"/>
 
     <Button
         android:id="@+id/settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="long press for settings" />
+        android:background="#ffffff"
+        android:text="long press for settings"
+        android:textColor="#d95d91"/>
 </LinearLayout>
