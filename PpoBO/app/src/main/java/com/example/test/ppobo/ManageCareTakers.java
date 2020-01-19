@@ -55,6 +55,9 @@ public class ManageCareTakers extends AppCompatActivity {
                                     data.put("name", documentSnapshot.getString("name"));
                                     data.put("phoneNum", documentSnapshot.getString("phoneNum"));
                                     db.collection("Users").document(mAuth.getCurrentUser().getEmail()).collection("people").document(careTaker).set(data);
+                                    HashMap<String,String> data2 = new HashMap<>();
+                                    data2.put("email",mAuth.getCurrentUser().getEmail());
+                                    db.collection("Users").document(careTaker).collection("people").document(mAuth.getCurrentUser().getEmail()).set(data2);
                                     careTakerTV.setText("");
                                 }
                             }
