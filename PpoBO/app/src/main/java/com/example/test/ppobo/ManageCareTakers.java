@@ -89,6 +89,8 @@ public class ManageCareTakers extends AppCompatActivity {
     }
     private void getCareTakers(){
         careGivers = new ArrayList<>();
+        adapter = new CareGiverAdapter(this,R.layout.care_giver_adapter, careGivers);
+        careGiverListView.setAdapter(adapter);
         db.collection("Users").document(mAuth.getCurrentUser().getEmail()).collection("people").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -97,13 +99,13 @@ public class ManageCareTakers extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 User careGiver = new User(document.getString("name"), document.getString("phoneNum"), document.getId(), "Care Giver");
                                 careGivers.add(careGiver);
+                                adapter.notifyDataSetChanged();
                             }
                         }
                     }
                 });
-        adapter = new CareGiverAdapter(this,R.layout.care_giver_adapter, careGivers);
-        careGiverListView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
+
     }
 
 }
