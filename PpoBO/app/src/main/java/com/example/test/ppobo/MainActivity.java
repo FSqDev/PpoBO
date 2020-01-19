@@ -28,6 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import io.radar.sdk.Radar;
+import io.radar.sdk.RadarTrackingOptions;
 import io.radar.sdk.model.RadarEvent;
 import io.radar.sdk.model.RadarUser;
 
@@ -74,9 +75,18 @@ public class MainActivity extends AppCompatActivity {
         Radar.trackOnce(new Radar.RadarCallback() {
             @Override
             public void onComplete(@NotNull Radar.RadarStatus radarStatus, @Nullable Location location, @Nullable RadarEvent[] radarEvents, @Nullable RadarUser radarUser) {
-                
+
             }
         });
+        Radar.startTracking();
+
+        RadarTrackingOptions trackingOptions = new RadarTrackingOptions.Builder()
+                .priority(Radar.RadarTrackingPriority.RESPONSIVENESS) // use EFFICIENCY instead to reduce location update frequency
+                .offline(Radar.RadarTrackingOffline.REPLAY_STOPPED) // use REPLAY_OFF instead to disable offline replay
+                .sync(Radar.RadarTrackingSync.POSSIBLE_STATE_CHANGES) // use ALL instead to sync all location updates
+                .build();
+
+        Radar.startTracking(trackingOptions);
     }
 
     /*@Override
