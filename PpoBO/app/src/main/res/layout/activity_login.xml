@@ -8,42 +8,45 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="269dp"
-        android:layout_height="293dp"
-        android:layout_centerHorizontal="true"
+        android:layout_width="413dp"
+        android:layout_height="459dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp" />
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-2dp"
+        app:srcCompat="@drawable/logo_full" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="310dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:orientation="vertical">
 
         <EditText
-            android:paddingStart="10dp"
             android:id="@+id/username"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:hint="Email" />
+            android:layout_height="50dp"
+            android:hint="Email"
+            android:paddingStart="10dp" />
 
         <EditText
-            android:paddingStart="10dp"
-            android:layout_marginTop="15dp"
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
             android:hint="Password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:paddingStart="10dp" />
 
         <Button
             android:id="@+id/login"
-            android:layout_marginTop="60dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#2196F3"
+            android:layout_marginTop="60dp"
+            android:background="#d95d91"
             android:text="Login"
             android:textColor="#fff" />
 
