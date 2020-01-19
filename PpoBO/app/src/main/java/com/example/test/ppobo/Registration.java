@@ -39,6 +39,7 @@ public class Registration extends AppCompatActivity {
     TextView emailTV;
     TextView usernameTV;
     TextView passwordTV;
+    TextView phoneNumTV;
     Button registerBTN;
     String TAG = "Sample";
     FirebaseFirestore db;
@@ -46,6 +47,7 @@ public class Registration extends AppCompatActivity {
     private String email;
     private String username;
     private String password;
+    private String phoneNum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Initialize Firebase Auth
@@ -59,10 +61,10 @@ public class Registration extends AppCompatActivity {
         passwordTV = findViewById(R.id.password_new_user_tv);
         registerBTN = findViewById(R.id.register_new_user_btn);
         usernameTV = findViewById(R.id.username_new_user_tv);
+
         final CollectionReference collectionReference = db.collection("Users");
 
         Spinner userType = findViewById(R.id.user_type);
-        userType.setOnItemSelectedListener();
 
 
         // Upon pressing the register button

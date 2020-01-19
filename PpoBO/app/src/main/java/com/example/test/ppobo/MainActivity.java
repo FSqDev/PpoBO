@@ -1,6 +1,7 @@
 package com.example.test.ppobo;
 
 import android.Manifest;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 
@@ -53,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -108,13 +111,22 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-
+    @Override
+    public void onStart(){
+        super.onStart();
+        if (mAuth.getCurrentUser() == null){
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
+        } else if (mAuth.getCurrentUser() != null){
+            ;
+        }
+    }
 
     public void showFloatingActionButton() {
         fab.show();
-    };
+    }
 
     public void hideFloatingActionButton() {
         fab.hide();
-    };
+    }
 }
