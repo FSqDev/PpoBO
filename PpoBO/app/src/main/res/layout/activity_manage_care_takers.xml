@@ -5,8 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/linearLayout2">
+    android:id="@+id/linearLayout2"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="16dp">
 
+    <TextView
+        android:id="@+id/caretakersTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#d95d91"
+        android:gravity="center_horizontal"
+        android:paddingTop="17dp"
+        android:text="Your Trusted Caretakers"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/care_giver_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2">
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/caretaker_logo"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#d95d91"
+        app:layout_constraintBottom_toTopOf="@id/care_giver_list"
+        app:layout_constraintTop_toBottomOf="@id/caretakersTitle"
+        app:srcCompat="@android:drawable/star_on">
+
+    </ImageView>
     <ListView
         android:id="@+id/care_giver_list"
         android:layout_width="wrap_content"
@@ -14,18 +44,23 @@
         app:layout_constraintBottom_toTopOf="@+id/add_care_taker_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caretaker_logo"
         tools:layout_conversion_absoluteHeight="685dp"
-        tools:layout_conversion_absoluteWidth="411dp">
+        tools:layout_conversion_absoluteWidth="411dp"
+        android:layout_marginTop="16dp">
 
     </ListView>
 
     <EditText
         android:id="@+id/add_care_taker_text"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:background="@layout/rounded_border_edittext"
         android:ems="10"
+        android:hint="Add a trusted caretaker"
         android:inputType="textPersonName"
+
+        android:paddingStart="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/add_care_taker"
         app:layout_constraintHorizontal_bias="0.536"
@@ -37,10 +72,12 @@
         android:id="@+id/add_care_taker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#d95d91"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_conversion_absoluteHeight="2dp"
-        tools:layout_conversion_absoluteWidth="88dp" />
+        tools:layout_conversion_absoluteWidth="88dp"
+        android:textColor="#ffffff"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
