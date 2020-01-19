@@ -86,6 +86,8 @@ public class CareReceiverMainActivity extends AppCompatActivity {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         String message = getResources().getString(R.string.help_msg);
 
+                                        getLocation();
+
                                         SmsManager mySmsManager = SmsManager.getDefault();
                                         mySmsManager.sendTextMessage(document.getString("phoneNum"), null, message, null, null);
 
@@ -96,8 +98,9 @@ public class CareReceiverMainActivity extends AppCompatActivity {
                                         data.put("phoneNum",self.getPhoneNum());
                                         data.put("location",addressLocation);
 
-                                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
-                                        db.collection("Users").document(document.getString("email")).collection("alerts").document(simpleDateFormat.format(new Date())).set(data);
+                                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                                        String format = simpleDateFormat.format(new Date());
+                                        db.collection("Users").document(document.getId()).collection("alerts").document(format).set(data);
 
                                         Intent changeScreen = new Intent(CareReceiverMainActivity.this, PostHelpRedirect.class);
                                         startActivity(changeScreen);
@@ -119,6 +122,7 @@ public class CareReceiverMainActivity extends AppCompatActivity {
     }
 
     private void getLocation(){
+        addressLocation = "";
         if (ContextCompat.checkSelfPermission(CareReceiverMainActivity.this , Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(CareReceiverMainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
         } else {
