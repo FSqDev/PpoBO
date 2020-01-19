@@ -37,7 +37,7 @@
         <EditText
             android:id="@+id/email_new_user_tv"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="50dp"
             android:layout_marginTop="40dp"
             android:hint="Email Address"
             android:inputType="textEmailAddress"
@@ -56,7 +56,7 @@
         <EditText
             android:id="@+id/username_new_user_tv"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="50dp"
             android:hint="Name"
             android:inputType="textPersonName"
             android:paddingStart="10dp" />
@@ -74,18 +74,26 @@
         <EditText
             android:id="@+id/password_new_user_tv"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="50dp"
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingStart="10dp" />
 
+        <TextView
+            android:id="@+id/fill_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:visibility="invisible" />
+
         <EditText
             android:id="@+id/phone_number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
             android:hint="Phone Number"
-            android:inputType="phone" />
+            android:layout_height="50dp"
+            android:inputType="phone"
+            android:paddingStart="10dp"/>
 
         <TextView
             android:id="@+id/invalid_phone_num"
