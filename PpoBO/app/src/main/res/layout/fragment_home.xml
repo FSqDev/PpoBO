@@ -27,6 +27,12 @@
     </ImageView>
 
 
+    <Button
+        android:id="@+id/move_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Maps" />
+
     <ListView
         android:id="@+id/list_care_receivers"
         android:layout_width="match_parent"

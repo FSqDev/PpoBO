@@ -1,5 +1,6 @@
 package com.example.test.ppobo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import users.User;
 
@@ -66,6 +68,14 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
+
+        root.findViewById(R.id.move_map).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MapFragment.class);
+                startActivity(intent);
+            }
+        });
 
 
 
