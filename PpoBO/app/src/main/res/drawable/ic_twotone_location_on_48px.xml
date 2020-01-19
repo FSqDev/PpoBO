@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<!--
   ~ Copyright (c) 2018 Razeware LLC
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,42 +27,11 @@
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   ~ THE SOFTWARE.
   -->
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/main"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context=".MainActivity">
 
-  <fragment
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
-
-  <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom|end"
-    android:layout_margin="@dimen/fab_margin"
-    android:orientation="vertical"
-    app:layout_dodgeInsetEdges="bottom">
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-      android:id="@+id/currentLocation"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/fab_margin"
-      app:srcCompat="@drawable/ic_baseline_my_location_24px" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-      android:id="@+id/newReminder"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/fab_margin"
-      app:srcCompat="@drawable/ic_baseline_add_24px" />
-  </LinearLayout>
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+<vector android:height="48dp" android:viewportHeight="24"
+    android:viewportWidth="24" android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillAlpha="0.3" android:fillColor="#FF000000"
+        android:pathData="M12,4C9.24,4 7,6.24 7,9c0,2.85 2.92,7.21 5,9.88c2.11,-2.69 5,-7 5,-9.88C17,6.24 14.76,4 12,4zM12,11.5c-1.38,0 -2.5,-1.12 -2.5,-2.5s1.12,-2.5 2.5,-2.5s2.5,1.12 2.5,2.5S13.38,11.5 12,11.5z" android:strokeAlpha="0.3"/>
+    <path android:fillColor="#FF000000" android:pathData="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7,-7.75 7,-13C19,5.13 15.87,2 12,2zM7,9c0,-2.76 2.24,-5 5,-5s5,2.24 5,5c0,2.88 -2.88,7.19 -5,9.88C9.92,16.21 7,11.85 7,9z"/>
+    <path android:fillColor="#FF000000" android:pathData="M12,9m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0"/>
+</vector>
