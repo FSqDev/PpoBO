@@ -49,6 +49,9 @@ public class CareReceiverMainActivity extends AppCompatActivity {
 
                                         SmsManager mySmsManager = SmsManager.getDefault();
                                         mySmsManager.sendTextMessage(document.getString("phoneNum"), null, message, null, null);
+
+                                        Intent changeScreen = new Intent(CareReceiverMainActivity.this, PostHelpRedirect.class);
+                                        startActivity(changeScreen);
                                     }
                                 }
                             }
