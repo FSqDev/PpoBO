@@ -4,7 +4,7 @@ A few years ago, a close friend of ours messaged us asking to keep an eye out fo
 
 PpoBO first creates a secure connection between a care receiver and the care taker(s). The care taker designates a geofence around a location that the care receiver resides in. If the care receiver ever exits the designated area, an automatic text message is sent to all of the care receiver's trusted care takers. Additionally, there is a panic button on the care receiver side that sends out the same text message and also provides quick access to calling various emergency services at the touch of a button. The care taker can view alerts with timestamps from their cared ones, including everytime the panic button is pressed, when the cared one leaves the geofence, or re-enters the geofence.
 
-Created at HackED 2020
+Created at, and first place overall at HackED 2020
 
 ## Authors
 
